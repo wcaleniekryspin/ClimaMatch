@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>ClimaMatch</title>
+    <link rel="stylesheet" href="css/main2.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet.awesome-markers@2.0.5/dist/leaflet.awesome-markers.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="menu">
+        <p>Poziom trudności: </p>
+        <div class="levels">
+        <p id="easy"> <i class="fa-solid fa-arrow-right"></i>łatwy</p>
+        <p id="normal"> <i class="fa-solid fa-arrow-right"></i>normalny</p>
+        <p id="trudny"> <i class="fa-solid fa-arrow-right"></i>trudny</p>
+        </div>
+    </div> 
+
+    <div class="nav">
+        <div class="logo">
+        <img src="png/logo.png"> <h1 class="text_title">ClimaMatch</h1>
+        </div>
+        <!--<p>Poziom trudności: <span class="level">Łatwy</span> </p>-->
+        <button class="bar"><i class="fa-solid fa-bars"></i></button>
+    </div>
+    <div class="container"> 
+        <div id="animationContainer">
+            <div class="ring"></div>
+            <div id="downloading"> Downloading data... </div>
+        </div>
+        <div class="diagram-container">
+        <div id="diagrams" class="diagram">
+
+             <canvas id="tempPreci" class="wykres"></canvas>
+             <canvas id="cloudWind" class="wykres"></canvas>
+             <canvas id="polution" class="wykres"></canvas>
+             <canvas id="sun" class="wykres"></canvas>
+             
+        </div>
+        </div>
+        <input type="checkbox" id="mapToggle" hidden>
+
+<label id="mapWrapper">
+    <div id="map" class="mapa"></div>
+     <div class="mini-map-label"></div>
+    <label for="mapToggle" id="mapToggleButton"></label>
+    
+</label>
+ <button id="submit" class="submit" type="button"><!--<i class="fa-solid fa-check">--></i>Submit</button>
+   
+    </div>
+
+    <div id="popUp" class="popUp">
+        <div class="container-popUp">
+        <p>Round: <span id="round"></span></p>
+        <p>Distance: <span id="distance"></span></p>
+        <p>Score: <span id="score"></span></p>
+        <p>Total score: <span id="total"></span></p>
+        <button id="nextRound" type="button">Next Round</button>
+        </div>
+        <!-- Popup podsumowania -->
+<div id="summaryPopUp">
+    <div class="container-popUp">
+    <h2>Summary</h2>
+    <p>Total score: <span id="totalSummary">0</span> points</p>
+    <p>Maximum score: 5000 points</p>
+    <button id="closeSummary">Close</button>
+    </div>
+</div>
+    </div>
+
+
+    <footer class="footer">
+        <p class="footer__bottom-text">&copy; <span class="footer-year"></span> ClimaMatch</p>
+    </footer>
+    
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+
+<script src="https://cdn.jsdelivr.net/npm/leaflet.awesome-markers@2.0.5/dist/leaflet.awesome-markers.min.js"></script>
+
+    <script src="https://kit.fontawesome.com/ecfd500718.js" crossorigin="anonymous"></script>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

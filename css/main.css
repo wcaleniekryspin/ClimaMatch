@@ -1,0 +1,340 @@
+@keyframes shake-bottom {
+  0% {
+    transform: rotate(0deg);
+    transform-origin: 50% 100%;
+  }
+  10% {
+    transform: rotate(2deg);
+  }
+  20% {
+    transform: rotate(-4deg);
+  }
+  30% {
+    transform: rotate(4deg);
+  }
+  40% {
+    transform: rotate(-4deg);
+  }
+  50% {
+    transform: rotate(4deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  70% {
+    transform: rotate(4deg);
+  }
+  80% {
+    transform: rotate(-2deg);
+  }
+  90% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(0deg);
+    transform-origin: 50% 100%;
+  }
+}
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Raleway", sans-serif;
+  font-size: 1.6rem;
+  height: 100vh !important;
+}
+
+.login-panel {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  right: -100%;
+  top: 0;
+  background-color: black;
+  height: 100vh;
+  width: 17em;
+  z-index: 10000;
+  transition: right 0.3s ease;
+  padding: 2em;
+  color: white;
+}
+.login-panel.active {
+  right: 0;
+}
+.login-panel.active p {
+  font-size: 2em;
+}
+.login-panel form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2em;
+}
+.login-panel form p {
+  padding-top: 2em;
+  padding-bottom: 0.5em;
+  font-size: 1em !important;
+}
+.login-panel form input {
+  width: 100%;
+  padding: 0.8em;
+  margin-bottom: 1em;
+}
+.login-panel form button {
+  padding: 0.7em 0.1em;
+  width: 8em;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+  background: white;
+  color: black;
+  border-radius: 0.2em;
+  border: none;
+  cursor: pointer;
+  font-size: 1em;
+}
+.login-panel form .log-row {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 0.5em;
+}
+.login-panel form .log-row i {
+  font-size: 1.5em;
+  padding: 0.5em 0em;
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 10;
+  border-bottom: 0.1em solid black;
+}
+.nav .logo {
+  display: flex;
+  flex-direction: row;
+  gap: 0;
+  padding: 0 1em;
+}
+.nav img {
+  width: 5em;
+  height: 5em;
+}
+.nav h1 {
+  padding: 1em 0;
+  font-size: 2em;
+}
+.nav .login-toggle {
+  border: none;
+  border-radius: 0.5em;
+  background-color: #4CBB17;
+  cursor: pointer;
+  padding: 0.4em 0.8em;
+  font-size: 1.8em;
+  margin-right: 1em;
+  transition: background-color 0.3s, color 0.3s;
+}
+.nav .login-toggle:hover {
+  background-color: black;
+  color: white;
+}
+.nav p {
+  font-size: 0.9em;
+}
+.nav .loggg {
+  display: flex;
+  flex-direction: row;
+  gap: 0.3em;
+}
+.nav .nav_main {
+  display: flex;
+  flex-direction: row;
+  gap: 2em;
+}
+.nav .nav_main .nav_menu {
+  padding: 1em;
+  padding-bottom: 0.5em;
+  border: none;
+  border-bottom: 0.1em solid transparent;
+  background-color: transparent;
+  font-size: 1.6em;
+}
+.nav .nav_main .nav_menu:hover {
+  cursor: pointer;
+  border-bottom: 0.1em solid black;
+}
+
+.main_Section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 1em;
+  gap: 0.5em;
+}
+
+.text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 12em;
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+}
+
+.motto {
+  -webkit-text-decoration: solid;
+          text-decoration: solid;
+  font-size: 4em;
+  width: 30vw;
+  font-weight: 700;
+}
+.motto p {
+  margin-top: 2em;
+  font-size: 0.3em;
+  font-weight: 200;
+  font-family: cursive;
+  font-style: italic;
+}
+
+.text_start {
+  margin-top: 1.5em;
+  font-size: 1em;
+  width: 30vw;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+  font-style: italic;
+}
+.text_start p {
+  display: none;
+}
+
+.title button {
+  margin: 0em 0em;
+  padding: 1em 2em;
+  border: 1px solid black;
+  background: none;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.2em;
+  border-radius: 2em;
+  transition: background-color 0.3s, color 0.3s;
+  animation: shake-bottom 7s infinite;
+}
+.title button:hover {
+  color: black;
+  background-color: #4CBB17;
+}
+
+.footer {
+  padding: 0.8em 1em;
+  background-color: black;
+  color: white;
+  font-size: 0.9em;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.planet-container {
+  border-radius: 50%;
+  box-shadow: 5px -3px 10px 3px #5e90f1;
+  height: 450px;
+  overflow: hidden;
+  position: relative;
+  width: 450px;
+  z-index: 1;
+}
+
+.night {
+  animation: rotate-night 80s linear infinite;
+  background-image: url(https://www.solarsystemscope.com/textures/download/2k_earth_nightmap.jpg);
+  background-size: 200%;
+  height: 500px;
+  position: absolute;
+  width: 500px;
+  z-index: 2;
+}
+
+.day {
+  animation: rotate-day 80s linear infinite;
+  background-image: url(https://www.solarsystemscope.com/textures/download/2k_earth_daymap.jpg);
+  background-size: 200%;
+  border-left: solid 1px black;
+  border-radius: 50%;
+  box-shadow: 5px 0 20px 10px #040615 inset;
+  height: 500px;
+  margin-left: 110px;
+  position: absolute;
+  width: 500px;
+  z-index: 3;
+}
+
+.clouds {
+  animation: rotate-day 50s linear infinite, spin-clouds 100s ease infinite;
+  background-image: url(https://www.solarsystemscope.com/textures/download/2k_earth_clouds.jpg);
+  background-size: 200%;
+  border-radius: 50%;
+  box-shadow: 5px 0 20px 10px #040615 inset, -9px 0px 20px 10px #5e90f1 inset;
+  height: 500px;
+  margin-left: 100px;
+  opacity: 0.45;
+  position: absolute;
+  width: 500px;
+  z-index: 4;
+}
+
+.inner-shadow {
+  background: transparent;
+  border-radius: 50%;
+  box-shadow: -5px 0 10px 1px #152b57 inset, 5px 0 10px 1px #040615 inset;
+  height: 500px;
+  margin-left: 0;
+  position: absolute;
+  width: 500px;
+  z-index: 5;
+}
+
+@keyframes rotate-day {
+  0% {
+    background-position: 120% 0;
+  }
+  100% {
+    background-position: -80% 0;
+  }
+}
+@keyframes rotate-night {
+  0% {
+    background-position: calc(120% + 120px) 0;
+  }
+  100% {
+    background-position: calc(-80% + 120px) 0;
+  }
+}
+@keyframes spin-clouds {
+  0% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(20deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}/*# sourceMappingURL=main.css.map */

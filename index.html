@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <title>ClimaMatch</title>
+    <link rel="stylesheet" href="css/main.css">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.awesome-markers/2.0.4/leaflet.awesome-markers.css" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.awesome-markers/2.0.4/leaflet.awesome-markers.js"></script>
+
+</head>
+<body>
+    
+    <div class="login-panel">
+        <p>Login</p>
+        <form>
+            <div class="log-row"><i class="fa-solid fa-user"></i><input type="text" placeholder="username" required></div>
+           <div class="log-row"> <i class="fa-solid fa-lock"></i> <input type="password" placeholder="password" required> </div>
+            <button type="submit">Login</button>
+            <p>Don't have an account?</p>
+            <button>Register</button>
+            
+        </form>
+    
+    </div> 
+    
+    <div class="nav">
+        <div class="logo">
+        <img src="png/logo.png"> <h1 class="text_title">ClimaMatch</h1>
+        </div>
+        <div class="nav_main">
+        <button class = "nav_menu">
+            <p>About</p>
+        </button>
+        <button class = "nav_menu">
+            <p>Learn</p>
+        </button>
+        <button class = "nav_menu">
+            <p>Leaderboard</p>
+        </button>
+       </div>
+       
+        <button class="login-toggle">
+            <div class="loggg"><p>Login</p></div>
+        </button>
+        
+        </div>
+    </div>
+
+    <div class="main_Section">
+        <div class="text">
+            <div class="motto">
+                How well do you know your Planet?
+                <p class="under">Explore the world through data. One location, multiple charts. Connect the dots. Mark a spot.</p>
+            </div>
+
+            <div class="text_start">
+                <!-- All images available from -->
+<!-- https://www.solarsystemscope.com/textures/ -->
+
+ <!--Code from: https://codepen.io/jamesfinn180/pen/VwzENbR-->
+<div class='planet-container'>
+    <div class='night'></div>
+    <div class='day'></div>
+    <div class='clouds'></div>
+    <div class='inner-shadow'></div>
+</div>
+            </div>
+        </div>
+        <div class="title">
+            <a href="main.html">
+                <button>Start!</button>
+            </a>
+        </div>
+    </div>
+    
+    <footer class="footer">
+        <p class="footer__bottom-text">&copy; <span class="footer-year"></span> ClimaMatch</p>
+    </footer>
+    
+    <div id="map"></div>
+    <!--<div id="status">Czekam na lokalizację...</div>-->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
+    <script src="js/script.js" defer></script>
+    <script src="js/main.js"></script>
+    <script src="https://kit.fontawesome.com/ecfd500718.js" crossorigin="anonymous"></script>
+</body>
+</html>
