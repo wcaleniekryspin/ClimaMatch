@@ -10,6 +10,18 @@ document.addEventListener('DOMContentLoaded', function() {
     const trudnyLevel = document.getElementById('trudny');
     const levelSpan = document.querySelector('.level');
 
+const closeLogin = document.getElementById("closeLogin");
+
+// Otwieranie panelu
+function openLoginPanel() {
+  loginPanel.classList.add("active");
+}
+
+// Zamykanie panelu
+closeLogin.addEventListener("click", () => {
+  loginPanel.classList.remove("active");
+});
+    
    
 
 
@@ -110,6 +122,7 @@ document.addEventListener('DOMContentLoaded', function() {
             event.stopPropagation();
         });
     }
+    
 
    /* window.addEventListener("load", () => {
         if (performance.getEntriesByType("navigation")[0].type === "reload") {

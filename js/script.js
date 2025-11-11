@@ -62,7 +62,7 @@ async function getData(lat, lng) {
         var labelsAvg = [];
         
         /* ********************* */
-        
+        document.body.classList.remove("loading"); // <--- DODANE
         document.getElementById("animationContainer").style.display = 'none';
         document.getElementById("mapWrapper").style.display = 'block';
         document.getElementById("submit").style.display = 'block';
@@ -159,6 +159,7 @@ async function getData(lat, lng) {
                         ]
                     },
                     options: {
+                        maintainAspectRatio: false,
                         responsive: true,
                         scales: {
                             x: { title: { display: true, text: 'Day of the year' }, ticks: {maxTicksLimit: 13}, stacked: true },
@@ -203,6 +204,7 @@ async function getData(lat, lng) {
                         ]
                     },
                     options: {
+                        maintainAspectRatio: false,
                         responsive: true,
                         scales: {
                             x: { title: { display: true, text: 'Day of the year' }, ticks: {maxTicksLimit: 13} },
@@ -235,6 +237,7 @@ async function getData(lat, lng) {
                         ]
                     },
                     options: {
+                        maintainAspectRatio: false,
                         responsive: true,
                         scales: {
                             x: { title: { display: true, text: 'Day of the year' }, ticks: {maxTicksLimit: 13} },
@@ -310,6 +313,7 @@ async function getData(lat, lng) {
                         ]
                     },
                     options: {
+                        maintainAspectRatio: false,
                         responsive: true,
                         scales: {
                             x: { title: { display: true, text: 'Day of the year' }, ticks: {maxTicksLimit: 13} },
@@ -502,5 +506,17 @@ document.addEventListener('DOMContentLoaded', async function() {
     });
 
     // Załaduj dane wykresów
+    document.body.classList.add("loading"); // <--- DODANE
     getData(lat, lng);
+
+    const footerYear = document.querySelector('.footer-year');
+
+    const handleCurrentYear = () => {
+        const year = (new Date).getFullYear();
+        if (footerYear) {
+            footerYear.innerText = year;
+        }
+    }
+     
+    handleCurrentYear();
 });

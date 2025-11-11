@@ -46,14 +46,24 @@ html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
+@media (max-width: 768px) {
+  html {
+    font-size: 55%;
+  }
+}
 
 body {
   font-family: "Raleway", sans-serif;
   font-size: 1.6rem;
   display: flex;
   overflow: hidden;
-  height: 100vh;
+  min-height: 100vh;
   flex-direction: column;
+}
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+  }
 }
 
 .menu {
@@ -71,6 +81,14 @@ body {
   color: black;
   border: none;
   border-left: 0.2em solid black;
+  z-index: 100000000000000000;
+}
+@media (max-width: 768px) {
+  .menu {
+    width: 50%;
+    border-left: none;
+    display: none;
+  }
 }
 .menu.active {
   right: 0;
@@ -104,18 +122,35 @@ body {
   justify-content: space-between;
   z-index: 10;
   border: none;
-  margin-bottom: 2em;
   border-bottom: 0.1em solid black;
+}
+@media (max-width: 768px) {
+  .nav {
+    padding: 0.5em 0;
+    margin-bottom: 1em;
+  }
 }
 .nav .logo {
   display: flex;
   flex-direction: row;
   gap: 0;
-  padding: 0 1em;
+  padding: 0 0em;
+  align-items: center;
+}
+@media (max-width: 768px) {
+  .nav .logo {
+    padding: 0 0.5em;
+  }
 }
 .nav img {
   width: 5em;
   height: 5em;
+}
+@media (max-width: 768px) {
+  .nav img {
+    width: 3em;
+    height: 3em;
+  }
 }
 .nav p {
   margin-right: 1em;
@@ -125,6 +160,12 @@ body {
   font-weight: bold;
   font-size: 1em;
 }
+@media (max-width: 768px) {
+  .nav p {
+    padding: 0.5em;
+    font-size: 0.9em;
+  }
+}
 .nav .bar {
   background: white;
   border: none;
@@ -133,9 +174,22 @@ body {
   padding: 0.5em 0.5em;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+  .nav .bar {
+    font-size: 1.8em;
+    padding: 0.3em;
+    margin-right: 0.5em;
+  }
+}
 .nav h1 {
   padding: 1em 0;
   font-size: 2em;
+}
+@media (max-width: 768px) {
+  .nav h1 {
+    font-size: 1.5em;
+    padding: 0.5em 0;
+  }
 }
 .nav .login-toggle {
   border: none;
@@ -143,6 +197,12 @@ body {
   cursor: pointer;
   padding: 1em;
   font-size: 2em;
+}
+@media (max-width: 768px) {
+  .nav .login-toggle {
+    font-size: 1.5em;
+    padding: 0.5em;
+  }
 }
 
 .text_title {
@@ -154,6 +214,29 @@ body {
   padding: 1em;
   font-size: 2em;
 }
+@media (max-width: 768px) {
+  .text_title {
+    font-size: 1.5em;
+    padding: 0.5em;
+  }
+}
+
+.chartWrapper {
+  position: relative;
+  width: 35em;
+  height: 16em;
+}
+@media (max-width: 768px) {
+  .chartWrapper {
+    width: 100%;
+    height: 18em;
+  }
+}
+
+canvas.wykres {
+  width: 100% !important;
+  height: 100% !important;
+}
 
 .container {
   display: flex;
@@ -162,42 +245,57 @@ body {
   flex-direction: column;
   flex: 1;
   width: 100%;
+  padding: 0em;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5em;
+    margin-bottom: 2em !important;
+    justify-content: flex-start;
+  }
 }
 
 .diagram-container {
   position: relative;
-  height: 40em;
   display: flex;
   justify-content: center;
-  margin-left: 16em;
-}
-
-.wykres {
-  width: 300px;
-  height: 200px;
-}
-
-#diagrams {
-  position: relative;
+  margin-right: 3em;
   display: flex;
-  flex-direction: row;
-  gap: 1em;
-  width: 100%;
   flex-wrap: wrap;
-  align-items: flex-start;
-  height: 16em;
+  gap: 1em;
+  /*@include mobile {
+      height: 800em;
+  }*/
+}
+@media (max-width: 1184px) {
+  .diagram-container {
+    margin-right: 0;
+    height: auto;
+    flex-direction: column;
+    align-items: center;
+  }
 }
 
+/*.wykres{
+    width: 300px;
+    height: 200px;
+
+    /*@include mobile {
+        width: 100%;
+        max-width: 380px !important;
+        height: 0px !important;
+    }
+}*/
 .mapa {
   position: relative;
   width: 100%;
-  height: calc(100vh - 8rem); /* zostawia miejsce na nav + footer */
+  height: calc(100vh - 8rem);
   background: gray;
 }
 
 .submit {
-  display: none; /* domyślnie ukryte */
-  position: absolute; /* dla pozycjonowania wewnątrz mapWrapper */
+  display: none;
+  position: absolute;
   bottom: 5em;
   right: 1em;
   width: 12em;
@@ -210,11 +308,21 @@ body {
   color: black;
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
-  z-index: 100000000000000000000000000000000000000000000;
+  z-index: 100000000;
 }
 .submit:hover {
   background-color: #2b7b05;
   color: white;
+}
+@media (max-width: 1184px) {
+  .submit {
+    position: fixed !important;
+  }
+}
+@media (max-width: 768px) {
+  .submit {
+    display: none !important;
+  }
 }
 
 #status {
@@ -238,9 +346,23 @@ body {
   font-size: 0.9em;
   text-align: center;
   width: 100%;
-  position: fixed;
+  position: static;
   bottom: 0;
   width: 100%;
+}
+@media (max-width: 1184px) {
+  .footer {
+    padding: 0.6em 0.5em;
+    font-size: 0.8em;
+    position: static;
+  }
+}
+@media (max-width: 768px) {
+  .footer {
+    padding: 0.6em 0.5em;
+    font-size: 0.8em;
+    position: static;
+  }
 }
 
 #mapWrapper {
@@ -255,18 +377,23 @@ body {
   cursor: default;
   background: white;
   transition: all 0.4s ease;
-  transition: all 0.4s ease;
-  z-index: 20000000000000000000;
+  z-index: 2000;
+}
+@media (max-width: 768px) {
+  #mapWrapper {
+    width: 7em;
+    height: 7em;
+    bottom: 1em;
+    right: 1em;
+  }
 }
 
-/* Mapa w środku */
 #mapWrapper #map {
   width: 100% !important;
   height: 100% !important;
-  pointer-events: none; /* mini tryb — brak przesuwania */
+  pointer-events: none;
 }
 
-/* Przycisk */
 #mapToggleButton {
   position: absolute;
   top: 0.5em;
@@ -274,26 +401,31 @@ body {
   width: 2.2em;
   height: 2.2em;
   border: none;
-  z-index: 100000000000000000;
-  /*cursor: pointer;*/
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-/* Ikona powiększenia w mini trybie */
 #mapToggleButton::before {
-  content: "⤢";
-  z-index: 10000000000;
-  font-size: 5em;
-  font-weight: 1000;
-  color: black;
-  margin-top: 1.5em;
-  margin-right: 1.5em;
+  content: "\f424";
+  font-family: "Font Awesome 5 Free";
+  z-index: 1000;
+  font-size: 8em;
+  font-weight: 600;
+  color: #2b7b05;
+  margin-top: 1em;
+  margin-right: 1em;
   cursor: pointer;
 }
+@media (max-width: 768px) {
+  #mapToggleButton::before {
+    font-size: 5.5em;
+    margin-top: 0.6em;
+    margin-right: 0.6em;
+  }
+}
 
-/* Gdy checkbox zaznaczony → powiększona mapa */
 #mapToggle:checked + #mapWrapper {
   top: 50%;
   left: 50%;
@@ -303,13 +435,17 @@ body {
   border-radius: 0.6em;
   z-index: 10000;
 }
+@media (max-width: 768px) {
+  #mapToggle:checked + #mapWrapper {
+    width: 95vw;
+    height: 60vh;
+  }
+}
 
-/* W powiększeniu mapa jest aktywna */
 #mapToggle:checked + #mapWrapper #map {
   pointer-events: auto;
 }
 
-/* Ikona zmienia się na X */
 #mapToggle:checked + #mapWrapper #mapToggleButton::before {
   content: "✕";
   font-size: 2em;
@@ -336,8 +472,13 @@ body {
   z-index: 5000;
   font-size: 1.2em;
 }
+@media (max-width: 768px) {
+  .mini-map-label {
+    font-size: 1em;
+    padding: 0.3em 0.6em;
+  }
+}
 
-/* Znikanie napisu po powiększeniu mapy */
 #mapToggle:checked + #mapWrapper .mini-map-label {
   display: none;
 }
@@ -348,9 +489,16 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: 100000000;
-  background-color: rgba(255, 255, 255, 0.7);
+  z-index: 100000;
+  background-color: rgba(255, 255, 255, 0.95);
   border: 0.1em solid black;
+  width: 90%;
+  max-width: 400px;
+}
+@media (max-width: 768px) {
+  .popUp {
+    position: fixed;
+  }
 }
 .popUp .container-popUp {
   display: flex;
@@ -360,8 +508,18 @@ body {
   padding: 2em 3em;
   gap: 1em;
 }
+@media (max-width: 768px) {
+  .popUp .container-popUp {
+    padding: 1.2em 0em;
+  }
+}
 .popUp .container-popUp p {
   font-size: 1.2em;
+}
+@media (max-width: 768px) {
+  .popUp .container-popUp p {
+    font-size: 1.1em;
+  }
 }
 .popUp .container-popUp button {
   padding: 0.5em;
@@ -369,13 +527,20 @@ body {
   background-color: #4CBB17;
   font-size: 1em;
   color: black;
+  border: none;
+  min-width: 120px;
 }
 .popUp .container-popUp button:hover {
   cursor: pointer;
   background-color: #2b7b05;
 }
+@media (max-width: 768px) {
+  .popUp .container-popUp button {
+    min-width: 100px;
+    padding: 0.8em;
+  }
+}
 
-/* pokaż submit tylko w powiększonej mapie */
 #mapToggle:checked ~ .submit {
   display: block;
   bottom: 5em;
@@ -386,6 +551,24 @@ body {
   border-radius: 2em;
   width: 8em;
 }
+@media (max-width: 1184px) {
+  #mapToggle:checked ~ .submit {
+    position: fixed;
+  }
+}
+@media (max-width: 768px) {
+  #mapToggle:checked ~ .submit {
+    display: block !important;
+    position: fixed;
+    bottom: 2em;
+    right: 10em;
+    padding: 1.2em 2em;
+    font-size: 1.6rem;
+    font-weight: bold;
+    border-radius: 2em;
+    width: 8em;
+  }
+}
 
 #summaryPopUp {
   display: none;
@@ -395,11 +578,25 @@ body {
   transform: translate(-50%, -50%);
   background-color: white;
   border: 0.1em solid black;
+  width: 90%;
+  max-width: 500px;
+  z-index: 100000;
+}
+@media (max-width: 768px) {
+  #summaryPopUp {
+    position: fixed;
+  }
 }
 #summaryPopUp .container-popUp {
-  width: 29em;
+  width: 100%;
   padding: 2em 3em;
   gap: 2em;
+}
+@media (max-width: 768px) {
+  #summaryPopUp .container-popUp {
+    padding: 1.5em 2em;
+    gap: 1.5em;
+  }
 }
 #summaryPopUp .container-popUp span {
   font-weight: 700;
@@ -408,8 +605,18 @@ body {
 #summaryPopUp .container-popUp h2 {
   font-size: 3em;
 }
+@media (max-width: 768px) {
+  #summaryPopUp .container-popUp h2 {
+    font-size: 2.2em;
+  }
+}
 #summaryPopUp .container-popUp p {
   font-size: 1.3em;
+}
+@media (max-width: 768px) {
+  #summaryPopUp .container-popUp p {
+    font-size: 1.1em;
+  }
 }
 #summaryPopUp .container-popUp button {
   padding: 0.5em 1em;
@@ -417,48 +624,142 @@ body {
   background-color: #4CBB17;
   font-size: 1.2em;
   color: black;
+  border: none;
+  min-width: 120px;
 }
 #summaryPopUp .container-popUp button:hover {
   cursor: pointer;
   background-color: #2b7b05;
 }
+@media (max-width: 768px) {
+  #summaryPopUp .container-popUp button {
+    font-size: 1.1em;
+    min-width: 100px;
+  }
+}
 
 #animationContainer {
   position: relative;
-  width: 800px;
-  height: 800px;
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em 0;
+  z-index: 1000000;
+  /*@include tablet {
+    height: 350px;
+  }
+
+  @include mobile {
+    height: 400px;
+    margin: 10em 0;
+  }*/
 }
 
 #downloading {
   position: absolute;
-  left: 0;
-  top: 17%;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 100%;
-  height: 100%;
   text-align: center;
-  line-height: 200px;
+  line-height: normal;
   text-transform: uppercase;
-  font-size: 30px;
+  font-size: 24px;
   font-family: sans-serif;
+  z-index: 10;
+}
+@media (max-width: 1184px) {
+  #downloading {
+    font-size: 5px;
+  }
+}
+@media (max-width: 768px) {
+  #downloading {
+    top: 18em;
+    font-size: 20px;
+  }
 }
 
 .ring {
   position: absolute;
-  left: 25%;
-  top: 3.5%;
-  width: 50%;
-  height: 50%;
+  left: 50%;
+  top: 50%;
+  width: 20em;
+  height: 20em;
   background-color: transparent;
-  border-left: 5px solid black;
+  border: 3px solid #f0f0f0;
+  border-left: 3px solid #4CBB17;
   border-radius: 50%;
   animation: load 1s linear infinite;
+  transform: translate(-50%, -50%);
+  /*@include tablet {
+    width: 100px;
+    height: 100px;
+  }*/
+}
+@media (max-width: 768px) {
+  .ring {
+    width: 20em;
+    height: 20em;
+    top: 25em;
+  }
 }
 
 @keyframes load {
   0% {
-    transform: rotate(0deg);
+    transform: translate(-50%, -50%) rotate(0deg);
   }
   100% {
-    transform: rotate(360deg);
+    transform: translate(-50%, -50%) rotate(360deg);
   }
+}
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  flex: 1;
+  width: 100%;
+  padding: 0em;
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5em;
+    justify-content: center;
+    overflow-y: auto;
+  }
+}
+
+@media (max-width: 1184px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+  #diagrams {
+    margin-bottom: 2em;
+  }
+}
+body.loading {
+  height: 100vh;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: auto;
+    min-height: 100vh;
+  }
+  #diagrams {
+    margin-bottom: 2em;
+  }
+}
+body.loading {
+  height: 100vh;
+  overflow: hidden;
 }/*# sourceMappingURL=main2.css.map */

@@ -1,5 +1,24 @@
 @import './animations';
 
+// Mixiny dla responsywności
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin small-mobile {
+  @media (max-width: 480px) {
+    @content;
+  }
+}
+
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -8,14 +27,25 @@
 
 html{
     font-size: 62.5%;
-    scroll-behavior: smooth
+    scroll-behavior: smooth;
+    margin: 0;
+    padding: 0;
+    @include mobile {
+        font-size: 55%;
+    }
 }
 
 body{
+    margin: 0;
+    padding: 0;
     font-family: "Raleway", sans-serif;
     font-size: 1.6rem;
-    height: 100vh !important;
-    //overflow: hidden 
+    min-height: 100vh !important;
+    overflow-x: hidden;
+    @include mobile {
+        height: auto !important;
+        min-height: 100vh;
+    }
 }
 
 .login-panel{
@@ -33,10 +63,34 @@ body{
     padding: 2em;
     color: white;
     
+    @include mobile {
+        width: 100%;
+    }
+
+    .close-login {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 3rem;
+  font-weight: 300;
+  cursor: pointer;
+  color: white;
+  border: none;
+  z-index: 20000;
+    background-color: transparent;
+  @include mobile {
+    font-size: 5rem;
+  }
+}
+    
     &.active {
         right: 0;
     p{
         font-size: 2em;
+        
+        @include mobile {
+            font-size: 1.8em;
+        }
     }
     }
     
@@ -47,16 +101,24 @@ body{
         align-items: center;
         justify-content: center;
         margin-top: 2em;
+        width: 100%;
+        
         p{
             padding-top: 2em;
             padding-bottom: .5em;
             font-size: 1em !important;
+            text-align: center;
         }
         
         input {
             width: 100%;
             padding: 0.8em;
             margin-bottom: 1em;
+            font-size: 1.6rem;
+            
+            @include mobile {
+                padding: 1em;
+            }
         }
         
         button {
@@ -69,15 +131,32 @@ body{
             border: none;
             cursor: pointer;
             font-size: 1em;
+            
+            @include mobile {
+                width: 100%;
+                padding: 1em;
+                margin-top: 0.5em;
+            }
         }
         .log-row {
             display: flex;
             justify-content: center;
             flex-direction: row;
             gap: .5em;
+            width: 100%;
+            align-items: center;
+            
             i{
                 font-size: 1.5em;
                 padding: .5em 0em;
+                
+                @include mobile {
+                    font-size: 1.8em;
+                }
+            }
+            
+            input {
+                flex: 1;
             }
         }
     }
@@ -91,20 +170,47 @@ body{
     justify-content: space-between;
     z-index: 10;
     border-bottom: .1em solid black;
+    padding: 0em 0;
+    
+    @include mobile {
+        flex-wrap: wrap;
+        padding: 0.3em 0;
+    }
+    
     .logo {
         display: flex;
         flex-direction: row;
         gap: 0;
         padding: 0 1em;
+        align-items: center;
+        
+        @include mobile {
+            padding: 0 0.5em;
+        }
     }
+    
     img{
         width: 5em;
         height: 5em;
+        
+        @include mobile {
+            width: 3em;
+            height: 3em;
+        }
     }
 
     h1{
         padding: 1em 0;
         font-size: 2em;
+        
+        @include mobile {
+            font-size: 1.5em;
+            padding: 0.5em 0;
+        }
+        
+        @include small-mobile {
+            font-size: 1.3em;
+        }
     }
     
     .login-toggle{
@@ -116,25 +222,47 @@ body{
         font-size: 1.8em;
         margin-right: 1em;
         transition: background-color .3s, color .3s;
+        
         &:hover{
             background-color: black;
             color: white;
         }
+        
+        @include mobile {
+            font-size: 1.4em;
+            padding: 0.3em 0.6em;
+            margin-right: 0.5em;
+        }
     }
+    
     p{
         font-size: .9em;
         
+        @include mobile {
+            font-size: 0.8em;
+        }
     }
+    
     .loggg{
         display: flex;
         flex-direction: row;
         gap: .3em;
-
+        align-items: center;
     }
+    
     .nav_main{
         display: flex;
         flex-direction: row;
         gap: 2em;
+        
+        @include tablet {
+            gap: 1em;
+        }
+        
+        @include mobile {
+            display: none; // Ukrywamy główną nawigację na mobile - można dodać hamburger menu
+        }
+        
         .nav_menu{
             padding: 1em;
             padding-bottom: .5em;
@@ -142,9 +270,15 @@ body{
             border-bottom: .1em solid transparent;
             background-color: transparent;
             font-size: 1.6em;
+            
             &:hover{
                 cursor: pointer;
                 border-bottom: .1em solid black;
+            }
+            
+            @include tablet {
+                font-size: 1.4em;
+                padding: 0.8em 0.5em;
             }
         }
     }
@@ -155,8 +289,15 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 1em;
-    gap: .5em;
+    padding-top: 0em;
+    gap: 0em;
+    min-height: calc(100vh - 120px);
+    
+    @include mobile {
+        padding: 1em 0.5em;
+        gap: 2em;
+        min-height: calc(100vh - 80px);
+    }
 }
  
 .text{
@@ -166,20 +307,71 @@ body{
     flex-direction: row;
     gap: 12em;
     text-decoration: solid;
-   
+    
+    @include tablet {
+        gap: 2em;
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    @include mobile {
+        gap: 3em;
+        flex-direction: column;
+        justify-content: center; // Dodane
+        align-items: center; // Dodane
+        width: 100%; // Dodane
+    }
 }
 
 .motto{
     text-decoration: solid;
-    font-size: 4em;
+    font-size: 3.5em;
     width: 30vw;
     font-weight: 700;
-     p{
+    @include tablet {
+        width: 80vw;
+        font-size: 2.5em;
+         display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    }
+    
+    @include mobile {
+        width: 90vw;
+        font-size: 2.5em;
+        display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+
+    }
+    
+    @include small-mobile {
+        font-size: 2.5em;
+        width: 80vw;
+        display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    }
+    
+    p{
         margin-top: 2em;
         font-size: .3em;
         font-weight: 200;
         font-family: cursive;
-         font-style: italic;
+        font-style: italic;
+        
+        @include tablet {
+            font-size: 0.35em;
+        }
+        
+        @include mobile {
+            width: 60vw;
+            font-size: 0.4em;
+            margin-top: 3em !important;
+        }
     }
 }
 
@@ -190,12 +382,35 @@ body{
     text-align: center;
     font-family: "Poppins", sans-serif; 
     font-style: italic;
+    
+    @include tablet {
+        width: 80vw;
+        margin-top: 0;
+        display: flex; // Dodane
+        justify-content: center; // Dodane
+        align-items: center; // Dodane
+    }
+    
+    @include mobile {
+        width: 90vw;
+        margin-top: 0;
+        display: flex; // Dodane
+        justify-content: center; // Dodane
+        align-items: center; // Dodane
+    }
+    
     p{
         display: none;
     }
 }
 
 .title {
+    margin: 2em 0;
+    
+    @include mobile {
+        margin: 1em 0;
+    }
+    
     button{
         margin: 0em 0em;
         padding: 1em 2em;
@@ -208,10 +423,18 @@ body{
         border-radius: 2em;
         transition: background-color .3s, color .3s;
         animation: shake-bottom 7s infinite;
+        min-width: 150px;
         
         &:hover {
             color: black;
             background-color: #4CBB17;
+        }
+        
+        @include mobile {
+            padding: 1em 2em;
+            font-size: 1.2em;
+            width: 100%;
+            max-width: 6em;
         }
     }
 }
@@ -226,9 +449,16 @@ body{
     bottom: 0;
     left: 0;
     width: 100%;
+    z-index: 1;
+    @include mobile {
+        padding: 0.6em 0.5em;
+        font-size: 0.8em;
+        position: fixed; // Zmiana na relative dla mobile jeśli potrzebne
+    }
 }
 
 .planet-container {
+    
     border-radius: 50%;
     box-shadow: 5px -3px 10px 3px #5e90f1;
     height: 450px;
@@ -236,7 +466,23 @@ body{
     position: relative;
     width: 450px;
     z-index: 1;
+    
+    @include tablet {
+        height: 300px;
+        width: 300px;
+    }
+    
+    @include mobile {
+        height: 300px;
+        width: 300px;
+    }
+    
+    @include small-mobile {
+        height: 250px;
+        width: 250px;
+    }
 }
+
 .night {
     animation: rotate-night 80s linear infinite;
     background-image: url(https://www.solarsystemscope.com/textures/download/2k_earth_nightmap.jpg);
@@ -245,7 +491,24 @@ body{
     position: absolute;
     width: 500px;
     z-index: 2;
+    
+    @include tablet {
+        height: 450px;
+        width: 450px;
+    }
+    
+    @include mobile {
+
+        height: 350px;
+        width: 350px;
+    }
+    
+    @include small-mobile {
+        height: 300px;
+        width: 300px;
+    }
 }
+
 .day {
     animation: rotate-day 80s linear infinite;
     background-image: url(https://www.solarsystemscope.com/textures/download/2k_earth_daymap.jpg);
@@ -258,7 +521,26 @@ body{
     position: absolute;
     width: 500px;
     z-index: 3;
+    
+    @include tablet {
+        height: 450px;
+        width: 450px;
+        margin-left: 100px;
+    }
+    
+    @include mobile {
+        height: 350px;
+        width: 350px;
+        margin-left: 80px;
+    }
+    
+    @include small-mobile {
+        height: 300px;
+        width: 300px;
+        margin-left: 60px;
+    }
 }
+
 .clouds {
     animation: rotate-day 50s linear infinite, spin-clouds 100s ease infinite;
     background-image: url(https://www.solarsystemscope.com/textures/download/2k_earth_clouds.jpg);
@@ -271,7 +553,26 @@ body{
     position: absolute;
     width: 500px;
     z-index: 4;
+    
+    @include tablet {
+        height: 450px;
+        width: 450px;
+        margin-left: 90px;
+    }
+    
+    @include mobile {
+        height: 350px;
+        width: 350px;
+        margin-left: 70px;
+    }
+    
+    @include small-mobile {
+        height: 300px;
+        width: 300px;
+        margin-left: 50px;
+    }
 }
+
 .inner-shadow {
     background: transparent;
     border-radius: 50%;
@@ -281,19 +582,76 @@ body{
     position: absolute;
     width: 500px;
     z-index: 5;
+    
+    @include tablet {
+        height: 450px;
+        width: 450px;
+    }
+    
+    @include mobile {
+        height: 350px;
+        width: 350px;
+    }
+    
+    @include small-mobile {
+        height: 300px;
+        width: 300px;
+    }
 }
 
 @keyframes rotate-day {
     0% { background-position: 120% 0; }
     100% { background-position: -80% 0; }
 }
+
 @keyframes rotate-night {
     0% { background-position: calc(120% + 120px) 0; }
     100% { background-position: calc(-80% + 120px) 0; }
 }
+
 @keyframes spin-clouds {
     0% { transform: rotate(0deg); }
     50% { transform: rotate(20deg); }
     100% { transform: rotate(0deg); }
 }
 
+// Dodatkowe style dla mobile - hamburger menu
+.mobile-menu-toggle {
+    display: none;
+    
+    @include mobile {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 2em;
+        cursor: pointer;
+        padding: 0.5em;
+        margin-right: 0.5em;
+    }
+}
+
+// Responsywna nawigacja dla mobile
+@include mobile {
+    .nav_main.mobile-active {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100vw;
+        background: white;
+        border-top: 1px solid black;
+        z-index: 1000;
+        
+        .nav_menu {
+            width: 100%;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+            padding: 1em;
+            
+            &:hover {
+                background-color: #f5f5f5;
+            }
+        }
+    }
+}
